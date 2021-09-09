@@ -42,3 +42,5 @@ Usually by abstraction, we mean an abstract class or interface. Essentially, thi
 
 We try not to enter into classes depending on its smaller parts.
 
+## Goal
+This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way without any errors.
