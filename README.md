@@ -4,13 +4,9 @@ SOLID is a collection of important programming practices that were developed by 
 ## SOLID consists of 5 coding practices:
 
 SRP - Single responsibility principle
-
 OCP - Open/close principle
-
 LSP - Liskov substitution principle
-
 ISP - Interface segregation principle
-
 DIP - Dependency inversion principle
 
 ## 1. LSP - Liskov substitution principle
@@ -18,10 +14,9 @@ Functions that use pointers or references to base classes must also be able to u
 ## Code implementation of LSP
 
 ## Rectangle.java
-public class Rectangle {
 
-         int width, height;
-
+     public class Rectangle {
+        int width, height;
         Rectangle(int width, int height) {
             this.width = width;
             this.height = height;
@@ -41,7 +36,7 @@ public class Rectangle {
         }
 
 ## RectangleFactory.java
-public class RectangleFactory {
+         public class RectangleFactory {
         @Contract("_ -> new")
         public static @NotNull Rectangle newSquare(int side) {
             return new Rectangle(side, side);
@@ -69,8 +64,8 @@ public class MainLsp {
     }
 
 ## Output :-
-Expected area is 8 for Figure(width=2, height=4)
-Expected area is 16 for Figure(width=4, height=4)
+ Expected area is 8 for Figure(width=2, height=4)
+ Expected area is 16 for Figure(width=4, height=4)
 
 ## Goal
 This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way without any errors.
@@ -148,8 +143,8 @@ public class MainIsp {
     }
 
 ## Output :-
-Bill Successfully Paid
-Order is Placed
+  Bill Successfully Paid
+  Order is Placed
 
 ## Goal
 This principle aims at splitting a set of actions into smaller sets so that a Class executes ONLY the set of actions it requires.
