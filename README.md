@@ -42,11 +42,11 @@ The child Class should be able to process the same requests and deliver the same
                     ", height=" + height +
                     ')';
         }
-        }
+       }
 
 ## RectangleFactory.java
 
-       public class RectangleFactory {
+     public class RectangleFactory {
         @Contract("_ -> new")
         public static @NotNull Rectangle newSquare(int side) {
             return new Rectangle(side, side);
@@ -55,25 +55,25 @@ The child Class should be able to process the same requests and deliver the same
         public static @NotNull Rectangle newRectangle(int width, int height) {
             return new Rectangle(width, height);
         }
-        }
+       }
 
 ## MainLsp.java
     
     public class MainLsp {
-    public static void main(String[] args) {
+       public static void main(String[] args) {
         Rectangle rectangle = RectangleFactory.newRectangle(2, 4);
         Rectangle square = RectangleFactory.newSquare(4);
         showArea(rectangle);
         showArea(square);
-    }
-    private static void showArea(@NotNull Rectangle figure) {
-        System.out.println("Expected area is " + figure.getArea() + " for " + figure);
-    }
-    }
+      }
+        private static void showArea(@NotNull Rectangle figure) {
+          System.out.println("Expected area is " + figure.getArea() + " for " + figure);
+      }
+     }
 
 ## Output :-
  
-     Expected area is 8 for Figure(width=2, height=4)
+    Expected area is 8 for Figure(width=2, height=4)
     Expected area is 16 for Figure(width=4, height=4)
 
 
@@ -89,7 +89,7 @@ The interface should give a specific shape to the class, and the methods that mu
 
 ## OnlineCoustomerImpl.java
        
-       public class OnlineCustomerImpl implements OrderInterface, PaymentInterface {
+     public class OnlineCustomerImpl implements OrderInterface, PaymentInterface {
         @Override
         public void placeOrder() {
             System.out.println("Order is Placed");
@@ -98,57 +98,56 @@ The interface should give a specific shape to the class, and the methods that mu
         public void payForOrder() {
             System.out.println("Bill Successfully Paid");
         }
-        } 
+       } 
         
 
 ## OrderInterface.java
     
-        public interface OrderInterface{
+     public interface OrderInterface{
         public void placeOrder();
         }
         
 ## PaymenInterface.java
         
-    public interface PaymentInterface {
-    public void payForOrder();
-    }
+     public interface PaymentInterface {
+        public void payForOrder();
+        }
 
 ## TelephoneCustomerImpl.java
         
     public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
-    @Override
-    public void placeOrder() {
-        System.out.println("Order is Placed");
-    }
-    @Override
-    public void payForOrder() {
-
-        System.out.println("Bill is Paid");
-    }
-    }
+       @Override
+       public void placeOrder() {
+           System.out.println("Order is Placed");
+       }
+       @Override
+       public void payForOrder() {
+       System.out.println("Bill is Paid");
+       }
+      }
 
 ## WalkInCustomerImpl.java
 
     public class WalkInCustomerImpl implements OrderInterface, PaymentInterface {
-    @Override
-    public void placeOrder() {
-        System.out.println("Order is Placed");
-    }
-    @Override
-    public void payForOrder() {
-        System.out.println("Bill is Paid");
-    }
-    }
+       @Override
+       public void placeOrder() {
+           System.out.println("Order is Placed");
+       }
+       @Override
+       public void payForOrder() {
+           System.out.println("Bill is Paid");
+       }
+      }
    
 ## MainIsp.java
 
     public class MainIsp {
-    public static void main(String[] args) {
-        OnlineCustomerImpl OCI=new OnlineCustomerImpl();
-        OCI.payForOrder();
-        OCI.placeOrder();
-    }
-    }
+       public static void main(String[] args) {
+           OnlineCustomerImpl OCI=new OnlineCustomerImpl();
+           OCI.payForOrder();
+           OCI.placeOrder();
+       }
+      }
     
 ## Output :-
  
@@ -173,22 +172,22 @@ It also says that both the Class and the interface should not know how the tool 
 
 ## Person.java
    
-   public class Person {
-    public String name;
-    public Enum role;
-    public Person(String name, Enum role) {
-        this.name = name;
-        this.role = role;
-    }
-    }
+    public class Person {
+       public String name;
+       public Enum role;
+       public Person(String name, Enum role) {
+           this.name = name;
+           this.role = role;
+       }
+      }
     
 ## RealtionshipBrowser.java
     
     public interface RelationshipBrowser {
         List<Person> findAllChildrenOf(Person person);
     }
-  Relationship.java
-   class Relationships implements RelationshipBrowser {
+        Relationship.java
+         class Relationships implements RelationshipBrowser {
         public List<Person> findAllChildrenOf(Person person) {
 
             return relations.stream()
@@ -198,22 +197,22 @@ It also says that both the Class and the interface should not know how the tool 
         private List<Person> relations = new ArrayList<>();
         void addParentAndChild(Person person) {
             relations.add(person);
-        }
-         }
+       }
+      }
 
 ## Research.java
    
      public class Research {
-    Research(Person parent, @NotNull RelationshipBrowser browser) {
-        List<Person> children = browser.findAllChildrenOf(parent);
-        for (Person child : children)
+        Research(Person parent, @NotNull RelationshipBrowser browser) {
+           List<Person> children = browser.findAllChildrenOf(parent);
+           for (Person child : children)
             System.out.println(parent.name + " has a child called " + child.name);
-    }
-    @Override
-    public String toString() {
-        return "Research end";
-    }
-    }
+     }
+       @Override
+       public String toString() {
+          return "Research end";
+       }
+      }
     
  ## Role.java
  
@@ -226,7 +225,7 @@ It also says that both the Class and the interface should not know how the tool 
  ## MainDip.java
  
     public class Dip {
-    public static void main(String[] args) {
+       public static void main(String[] args) {
         Person parent = new Person("Jakob", Role.PARENT);
         Person child1 = new Person("Alex", Role.CHILD);
         Person child2 = new Person("Anna", Role.CHILD);
@@ -236,9 +235,8 @@ It also says that both the Class and the interface should not know how the tool 
         relationships.addParentAndChild(child2);
         Research research = new Research(parent, relationships);
         System.out.println(research);
-
-    }
-    }
+      }
+     }
   
 ## Output :-
  
