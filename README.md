@@ -73,8 +73,9 @@ The child Class should be able to process the same requests and deliver the same
 
 ## Output :-
  
-   Expected area is 8 for Figure(width=2, height=4)
-   Expected area is 16 for Figure(width=4, height=4)
+     Expected area is 8 for Figure(width=2, height=4)
+    Expected area is 16 for Figure(width=4, height=4)
+
 
 ## Goal
 This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way without any errors.
@@ -113,8 +114,8 @@ The interface should give a specific shape to the class, and the methods that mu
     }
 
 ## TelephoneCustomerImpl.java
-
-   public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
+        
+    public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
     @Override
     public void placeOrder() {
         System.out.println("Order is Placed");
@@ -148,11 +149,11 @@ The interface should give a specific shape to the class, and the methods that mu
         OCI.placeOrder();
     }
     }
-
+    
 ## Output :-
-   
-   Bill Successfully Paid
-   Order is Placed
+ 
+     Bill Successfully Paid
+     Order is Placed   
 
 ## Goal
 This principle aims at splitting a set of actions into smaller sets so that a Class executes ONLY the set of actions it requires.
