@@ -38,7 +38,7 @@ public class Rectangle {
                     ", height=" + height +
                     ')';
         }
-}
+        }
 
 ## RectangleFactory.java
 public class RectangleFactory {
@@ -51,7 +51,7 @@ public class RectangleFactory {
         public static @NotNull Rectangle newRectangle(int width, int height) {
             return new Rectangle(width, height);
         }
-}
+        }
 
 ## MainLsp.java
 public class MainLsp {
@@ -66,7 +66,7 @@ public class MainLsp {
     private static void showArea(@NotNull Rectangle figure) {
         System.out.println("Expected area is " + figure.getArea() + " for " + figure);
     }
-}
+    }
 
 ## Output :-
 Expected area is 8 for Figure(width=2, height=4)
@@ -94,7 +94,8 @@ public class OnlineCustomerImpl implements OrderInterface, PaymentInterface {
         public void payForOrder() {
             System.out.println("Bill Successfully Paid");
         }
-       }
+        } 
+        
 
 ## OrderInterface.java
 public interface OrderInterface{
@@ -121,7 +122,7 @@ public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
 
         System.out.println("Bill is Paid");
     }
-   }
+    }
 
 ## WalkInCustomerImpl.java
 public class WalkInCustomerImpl implements OrderInterface, PaymentInterface {
@@ -135,7 +136,16 @@ public class WalkInCustomerImpl implements OrderInterface, PaymentInterface {
     public void payForOrder() {
         System.out.println("Bill is Paid");
     }
-}
+    }
+   
+## MainIsp.java
+public class MainIsp {
+    public static void main(String[] args) {
+        OnlineCustomerImpl OCI=new OnlineCustomerImpl();
+        OCI.payForOrder();
+        OCI.placeOrder();
+    }
+    }
 
 ## Output :-
 Bill Successfully Paid
@@ -166,7 +176,7 @@ public class Person {
         this.name = name;
         this.role = role;
     }
-  }
+    }
     
 ## RealtionshipBrowser.java
 public interface RelationshipBrowser {
@@ -187,9 +197,8 @@ public interface RelationshipBrowser {
         void addParentAndChild(Person person) {
             relations.add(person);
         }
-    }
+         }
 
-  
 ## Research.java
   public class Research {
     Research(Person parent, @NotNull RelationshipBrowser browser) {
