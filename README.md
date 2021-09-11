@@ -16,6 +16,9 @@ DIP - Dependency inversion principle
 ## 1. LSP - Liskov substitution principle
 Functions that use pointers or references to base classes must also be able to use class objects that inherit from the base classes without having a thorough knowledge of these objects.
 
+@ When a child Class cannot perform the same actions as its parent Class, this can cause bugs.
+@ If you have a Class and create another Class from it, it becomes a parent and the new Class becomes a child. The child Class should be able to do everything the parent Class can do. This process is called Inheritance.
+@ The child Class should be able to process the same requests and deliver the same result as the parent Class or it could deliver a result that is of the same type.
 ## Code implementation of LSP
 
 ## Rectangle.java
@@ -26,11 +29,9 @@ Functions that use pointers or references to base classes must also be able to u
             this.width = width;
             this.height = height;
         }
-
         int getArea() {
             return width * height;
         }
-
         @Override
         public String toString() {
             return "Figure(" +
@@ -47,7 +48,6 @@ Functions that use pointers or references to base classes must also be able to u
         public static @NotNull Rectangle newSquare(int side) {
             return new Rectangle(side, side);
         }
-
         @Contract("_, _ -> new")
         public static @NotNull Rectangle newRectangle(int width, int height) {
             return new Rectangle(width, height);
@@ -60,11 +60,9 @@ Functions that use pointers or references to base classes must also be able to u
     public static void main(String[] args) {
         Rectangle rectangle = RectangleFactory.newRectangle(2, 4);
         Rectangle square = RectangleFactory.newSquare(4);
-
         showArea(rectangle);
         showArea(square);
     }
-
     private static void showArea(@NotNull Rectangle figure) {
         System.out.println("Expected area is " + figure.getArea() + " for " + figure);
     }
@@ -92,7 +90,6 @@ The interface should give a specific shape to the class, and the methods that mu
         public void placeOrder() {
             System.out.println("Order is Placed");
         }
-
         @Override
         public void payForOrder() {
             System.out.println("Bill Successfully Paid");
@@ -117,10 +114,8 @@ The interface should give a specific shape to the class, and the methods that mu
    public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
     @Override
     public void placeOrder() {
-
         System.out.println("Order is Placed");
     }
-
     @Override
     public void payForOrder() {
 
@@ -135,7 +130,6 @@ The interface should give a specific shape to the class, and the methods that mu
     public void placeOrder() {
         System.out.println("Order is Placed");
     }
-
     @Override
     public void payForOrder() {
         System.out.println("Bill is Paid");
@@ -178,7 +172,6 @@ It also says that both the Class and the interface should not know how the tool 
    public class Person {
     public String name;
     public Enum role;
-
     public Person(String name, Enum role) {
         this.name = name;
         this.role = role;
@@ -190,7 +183,6 @@ It also says that both the Class and the interface should not know how the tool 
     public interface RelationshipBrowser {
         List<Person> findAllChildrenOf(Person person);
     }
-
   Relationship.java
    class Relationships implements RelationshipBrowser {
         public List<Person> findAllChildrenOf(Person person) {
@@ -199,9 +191,7 @@ It also says that both the Class and the interface should not know how the tool 
                     .filter(p -> p.role.equals(Role.CHILD))
                     .collect(Collectors.toList());
         }
-
         private List<Person> relations = new ArrayList<>();
-
         void addParentAndChild(Person person) {
             relations.add(person);
         }
@@ -215,7 +205,6 @@ It also says that both the Class and the interface should not know how the tool 
         for (Person child : children)
             System.out.println(parent.name + " has a child called " + child.name);
     }
-
     @Override
     public String toString() {
         return "Research end";
@@ -237,12 +226,10 @@ It also says that both the Class and the interface should not know how the tool 
         Person parent = new Person("Jakob", Role.PARENT);
         Person child1 = new Person("Alex", Role.CHILD);
         Person child2 = new Person("Anna", Role.CHILD);
-
         Relationships relationships = new Relationships();
         relationships.addParentAndChild(parent);
         relationships.addParentAndChild(child1);
         relationships.addParentAndChild(child2);
-
         Research research = new Research(parent, relationships);
         System.out.println(research);
 
