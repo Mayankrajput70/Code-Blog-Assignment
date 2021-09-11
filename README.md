@@ -15,6 +15,59 @@ DIP - Dependency inversion principle
 
 ## 1. LSP - Liskov substitution principle
 Functions that use pointers or references to base classes must also be able to use class objects that inherit from the base classes without having a thorough knowledge of these objects.
+## Code implementation of LSP
+
+## Rectangle.java
+public class Rectangle {
+
+         int width, height;
+
+        Rectangle(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        int getArea() {
+            return width * height;
+        }
+
+        @Override
+        public String toString() {
+            return "Figure(" +
+                    "width=" + width +
+                    ", height=" + height +
+                    ')';
+        }
+}
+
+## RectangleFactory.java
+public class RectangleFactory {
+        @Contract("_ -> new")
+        public static @NotNull Rectangle newSquare(int side) {
+            return new Rectangle(side, side);
+        }
+
+        @Contract("_, _ -> new")
+        public static @NotNull Rectangle newRectangle(int width, int height) {
+            return new Rectangle(width, height);
+        }
+}
+
+## MainLsp.java
+public class MainLsp {
+    public static void main(String[] args) {
+        Rectangle rectangle = RectangleFactory.newRectangle(2, 4);
+        Rectangle square = RectangleFactory.newSquare(4);
+
+        showArea(rectangle);
+        showArea(square);
+    }
+
+    private static void showArea(@NotNull Rectangle figure) {
+        System.out.println("Expected area is " + figure.getArea() + " for " + figure);
+    }
+}
+
 
 ## Goal
 This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way without any errors.
@@ -49,7 +102,7 @@ public class Person {
         this.name = name;
         this.role = role;
     }
-    }
+  }
     
 ## RealtionshipBrowser.java
 public interface RelationshipBrowser {
@@ -90,7 +143,7 @@ public interface RelationshipBrowser {
  ## Role.java
   public enum Role {
         PARENT,
-        CHILD
+         CHILD
     }
 
 
