@@ -49,7 +49,8 @@ public class Person {
         this.name = name;
         this.role = role;
     }
-}
+    }
+    
 ## RealtionshipBrowser.java
 public interface RelationshipBrowser {
         List<Person> findAllChildrenOf(Person person);
@@ -69,7 +70,7 @@ public interface RelationshipBrowser {
         void addParentAndChild(Person person) {
             relations.add(person);
         }
-}
+    }
 
   
 ## Research.java
@@ -84,12 +85,13 @@ public interface RelationshipBrowser {
     public String toString() {
         return "Research end";
     }
-}
+    }
+    
  ## Role.java
   public enum Role {
         PARENT,
         CHILD
-}
+    }
 
 
  ## MainDip.java
@@ -108,7 +110,7 @@ public interface RelationshipBrowser {
         System.out.println(research);
 
     }
-}
+    }
   
 ## Output :-
   Bill is Paid
