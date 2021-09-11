@@ -4,13 +4,18 @@ SOLID is a collection of important programming practices that were developed by 
 ## SOLID consists of 5 coding practices:
 
 SRP - Single responsibility principle
+
 OCP - Open/close principle
+
 LSP - Liskov substitution principle
+
 ISP - Interface segregation principle
+
 DIP - Dependency inversion principle
 
 ## 1. LSP - Liskov substitution principle
 Functions that use pointers or references to base classes must also be able to use class objects that inherit from the base classes without having a thorough knowledge of these objects.
+
 ## Code implementation of LSP
 
 ## Rectangle.java
@@ -36,7 +41,8 @@ Functions that use pointers or references to base classes must also be able to u
         }
 
 ## RectangleFactory.java
-         public class RectangleFactory {
+         
+        public class RectangleFactory {
         @Contract("_ -> new")
         public static @NotNull Rectangle newSquare(int side) {
             return new Rectangle(side, side);
@@ -49,7 +55,8 @@ Functions that use pointers or references to base classes must also be able to u
         }
 
 ## MainLsp.java
-public class MainLsp {
+    
+    public class MainLsp {
     public static void main(String[] args) {
         Rectangle rectangle = RectangleFactory.newRectangle(2, 4);
         Rectangle square = RectangleFactory.newSquare(4);
@@ -64,7 +71,8 @@ public class MainLsp {
     }
 
 ## Output :-
- Expected area is 8 for Figure(width=2, height=4)
+
+ Expected area is 8 for Figure(width=2, height=4) 
  Expected area is 16 for Figure(width=4, height=4)
 
 ## Goal
@@ -77,9 +85,9 @@ The interface should give a specific shape to the class, and the methods that mu
 
 ## Code implementation of ISP
 
-##OnlineCoustomerImpl.java
-public class OnlineCustomerImpl implements OrderInterface, PaymentInterface {
-
+## OnlineCoustomerImpl.java
+       
+       public class OnlineCustomerImpl implements OrderInterface, PaymentInterface {
         @Override
         public void placeOrder() {
             System.out.println("Order is Placed");
@@ -93,19 +101,20 @@ public class OnlineCustomerImpl implements OrderInterface, PaymentInterface {
         
 
 ## OrderInterface.java
-public interface OrderInterface{
-
+    
+        public interface OrderInterface{
         public void placeOrder();
         }
         
 ## PaymenInterface.java
-public interface PaymentInterface {
+        
+    public interface PaymentInterface {
     public void payForOrder();
     }
 
 ## TelephoneCustomerImpl.java
-public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
 
+   public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
     @Override
     public void placeOrder() {
 
@@ -120,8 +129,8 @@ public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
     }
 
 ## WalkInCustomerImpl.java
-public class WalkInCustomerImpl implements OrderInterface, PaymentInterface {
 
+    public class WalkInCustomerImpl implements OrderInterface, PaymentInterface {
     @Override
     public void placeOrder() {
         System.out.println("Order is Placed");
@@ -134,7 +143,8 @@ public class WalkInCustomerImpl implements OrderInterface, PaymentInterface {
     }
    
 ## MainIsp.java
-public class MainIsp {
+
+    public class MainIsp {
     public static void main(String[] args) {
         OnlineCustomerImpl OCI=new OnlineCustomerImpl();
         OCI.payForOrder();
@@ -143,8 +153,9 @@ public class MainIsp {
     }
 
 ## Output :-
-  Bill Successfully Paid
-  Order is Placed
+   
+   Bill Successfully Paid
+   Order is Placed
 
 ## Goal
 This principle aims at splitting a set of actions into smaller sets so that a Class executes ONLY the set of actions it requires.
@@ -162,8 +173,9 @@ It also says that both the Class and the interface should not know how the tool 
 
 ## Code implementation of DIP
 
-##Person.java
-public class Person {
+## Person.java
+   
+   public class Person {
     public String name;
     public Enum role;
 
@@ -174,7 +186,8 @@ public class Person {
     }
     
 ## RealtionshipBrowser.java
-public interface RelationshipBrowser {
+    
+    public interface RelationshipBrowser {
         List<Person> findAllChildrenOf(Person person);
     }
 
@@ -195,7 +208,8 @@ public interface RelationshipBrowser {
          }
 
 ## Research.java
-  public class Research {
+   
+     public class Research {
     Research(Person parent, @NotNull RelationshipBrowser browser) {
         List<Person> children = browser.findAllChildrenOf(parent);
         for (Person child : children)
@@ -209,14 +223,16 @@ public interface RelationshipBrowser {
     }
     
  ## Role.java
-  public enum Role {
+ 
+     public enum Role {
         PARENT,
          CHILD
     }
 
 
  ## MainDip.java
-  public class Dip {
+ 
+    public class Dip {
     public static void main(String[] args) {
         Person parent = new Person("Jakob", Role.PARENT);
         Person child1 = new Person("Alex", Role.CHILD);
@@ -234,8 +250,9 @@ public interface RelationshipBrowser {
     }
   
 ## Output :-
-  Bill is Paid
-  Order is Placed
+ 
+     Bill is Paid
+     Order is Placed
 
 
 ## Goal
