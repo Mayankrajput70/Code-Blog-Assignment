@@ -68,6 +68,9 @@ public class MainLsp {
     }
 }
 
+## Output :-
+Expected area is 8 for Figure(width=2, height=4)
+Expected area is 16 for Figure(width=4, height=4)
 
 ## Goal
 This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way without any errors.
@@ -76,6 +79,67 @@ This principle aims to enforce consistency so that the parent Class or its child
 ISP says: "Many dedicated interfaces are better than one overall".
 
 The interface should give a specific shape to the class, and the methods that must be implemented within the class should be common to all implementation classes.
+
+## Code implementation of ISP
+
+##OnlineCoustomerImpl.java
+public class OnlineCustomerImpl implements OrderInterface, PaymentInterface {
+
+        @Override
+        public void placeOrder() {
+            System.out.println("Order is Placed");
+        }
+
+        @Override
+        public void payForOrder() {
+            System.out.println("Bill Successfully Paid");
+        }
+       }
+
+## OrderInterface.java
+public interface OrderInterface{
+
+        public void placeOrder();
+        }
+        
+## PaymenInterface.java
+public interface PaymentInterface {
+    public void payForOrder();
+    }
+
+## TelephoneCustomerImpl.java
+public class TelephoneCustomerImpl implements OrderInterface, PaymentInterface {
+
+    @Override
+    public void placeOrder() {
+
+        System.out.println("Order is Placed");
+    }
+
+    @Override
+    public void payForOrder() {
+
+        System.out.println("Bill is Paid");
+    }
+   }
+
+## WalkInCustomerImpl.java
+public class WalkInCustomerImpl implements OrderInterface, PaymentInterface {
+
+    @Override
+    public void placeOrder() {
+        System.out.println("Order is Placed");
+    }
+
+    @Override
+    public void payForOrder() {
+        System.out.println("Bill is Paid");
+    }
+}
+
+## Output :-
+Bill Successfully Paid
+Order is Placed
 
 ## Goal
 This principle aims at splitting a set of actions into smaller sets so that a Class executes ONLY the set of actions it requires.
