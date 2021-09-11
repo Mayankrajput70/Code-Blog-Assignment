@@ -16,9 +16,12 @@ DIP - Dependency inversion principle
 ## 1. LSP - Liskov substitution principle
 Functions that use pointers or references to base classes must also be able to use class objects that inherit from the base classes without having a thorough knowledge of these objects.
 
-@ When a child Class cannot perform the same actions as its parent Class, this can cause bugs.
-@ If you have a Class and create another Class from it, it becomes a parent and the new Class becomes a child. The child Class should be able to do everything the parent Class can do. This process is called Inheritance.
-@ The child Class should be able to process the same requests and deliver the same result as the parent Class or it could deliver a result that is of the same type.
+When a child Class cannot perform the same actions as its parent Class, this can cause bugs.
+
+If you have a Class and create another Class from it, it becomes a parent and the new Class becomes a child. The child Class should be able to do everything the parent Class can do. This process is called Inheritance.
+
+The child Class should be able to process the same requests and deliver the same result as the parent Class or it could deliver a result that is of the same type.
+
 ## Code implementation of LSP
 
 ## Rectangle.java
@@ -42,8 +45,8 @@ Functions that use pointers or references to base classes must also be able to u
         }
 
 ## RectangleFactory.java
-         
-        public class RectangleFactory {
+
+       public class RectangleFactory {
         @Contract("_ -> new")
         public static @NotNull Rectangle newSquare(int side) {
             return new Rectangle(side, side);
@@ -69,9 +72,9 @@ Functions that use pointers or references to base classes must also be able to u
     }
 
 ## Output :-
-
- Expected area is 8 for Figure(width=2, height=4) 
- Expected area is 16 for Figure(width=4, height=4)
+ 
+   Expected area is 8 for Figure(width=2, height=4)
+   Expected area is 16 for Figure(width=4, height=4)
 
 ## Goal
 This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way without any errors.
